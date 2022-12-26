@@ -18,7 +18,7 @@ public class ProductDataGenerator {
     public void generateDataOnStartup() {
         Faker faker = new Faker();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             Product product = new Product();
             product.setTitle(faker.food().fruit());
             product.setCost(faker.number().randomDouble(2, 10L, 150L));
