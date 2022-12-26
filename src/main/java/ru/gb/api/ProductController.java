@@ -22,7 +22,8 @@ public class ProductController {
         return productService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
+    @GetMapping("/all")
+    @ResponseBody
     public List<Product> getAll(@RequestParam(defaultValue = "0d") Double minCost, @RequestParam(defaultValue = "150d") Double maxCost) {
         return productService.getAll(minCost, maxCost);
     }
