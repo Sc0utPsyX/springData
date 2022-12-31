@@ -7,6 +7,7 @@ import ru.gb.model.Product;
 import ru.gb.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,10 +28,17 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public Product save(String title, Double cost){
-        return productRepository.save(new Product(title, cost));
-
+    public Product save(Product product){
+        if (Objects.isNull(product.getId())){
+            return productRepository.save(product);
+        } else {
+            Product updatedProduct = productRepository.findById(product.getId()).orElseThrow();
+            updatedProduct.setTitle(product.getTitle());
+            updatedProduct.setCost(product.getCost());
+            return productRepository.save(updatedProduct);
+        }
     }
+
 
     public List<Product> getAll(Double minCost, Double maxCost) {
         return productRepository.findAllByCostBetween(minCost, maxCost);
