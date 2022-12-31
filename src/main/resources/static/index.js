@@ -1,12 +1,12 @@
 angular.module ('app', []).controller('indexController', function ($scope, $http) {
-    const contextPath = 'http://localhost:8190/app/products';
+    const contextPath = 'http://localhost:8190/app/api/v1/products';
     $scope.start = 0;
     $scope.end = 10;
     $scope.productsList = [];
     $scope.length = 0;
 
     $scope.loadProducts = function () {
-        $http.get(contextPath + '/all')
+        $http.get(contextPath)
             .then(function (response) {
                 console.log(response.data);
                 $scope.productsList = response.data;
@@ -15,8 +15,8 @@ angular.module ('app', []).controller('indexController', function ($scope, $http
     };
     $scope.deleteProductById = function (productId){
         $http({
-        url: contextPath + '/delete/' + productId,
-        method: "GET"
+        url: contextPath + ("/") + productId,
+        method: "DELETE"
         }).then(function (response){
             $scope.loadProducts();
         });
