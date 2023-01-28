@@ -13,7 +13,23 @@ angular.module ('app', []).controller('indexController', function ($scope, $http
                 $scope.length = $scope.productsList.length;
             });
     };
+    $scope.deleteProductById = function (productId){
+        $http({
+        url: contextPath + ("/") + productId,
+        method: "DELETE"
+        }).then(function (response){
+            $scope.loadProducts();
+        });
+    };
 
+    $scope.createProduct = function (productTitle, productCost){
+        $http({
+            url: contextPath + '?title=' + productTitle + '&cost=' + productCost,
+            method: "POST"
+        }).then(function (response){
+            $scope.loadProducts();
+        });
+    };
 
     $scope.getSlicedProductList = function (start, end) {
         return $scope.productsList.slice(start, end);
