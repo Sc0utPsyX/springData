@@ -1,22 +1,22 @@
 angular.module ('app', []).controller('indexController', function ($scope, $http) {
-    const contextPath = 'http://localhost:8190/app/api/v1/products';
+    const contextPath = 'http://localhost:8190/app/api/v1/users';
     $scope.start = 0;
     $scope.end = 10;
-    $scope.productsList = [];
+    $scope.usersList = [];
     $scope.length = 0;
 
-    $scope.loadProducts = function () {
+    $scope.loadUsers = function () {
         $http.get(contextPath)
             .then(function (response) {
                 console.log(response.data);
-                $scope.productsList = response.data;
-                $scope.length = $scope.productsList.length;
+                $scope.usersList = response.data;
+                $scope.length = $scope.usersList.length;
             });
     };
 
 
-    $scope.getSlicedProductList = function (start, end) {
-        return $scope.productsList.slice(start, end);
+    $scope.getSlicedUserList = function (start, end) {
+        return $scope.usersList.slice(start, end);
     }
 
     $scope.changePage = function (direction){
@@ -35,6 +35,6 @@ angular.module ('app', []).controller('indexController', function ($scope, $http
         }
     }
 
-    $scope.loadProducts();
+    $scope.loadUsers();
 
 });

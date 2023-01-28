@@ -9,22 +9,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script src="index.js"></script>
+    <script src="userlist.js"></script>
 </head>
 <body>
     <div class="container" ng-controller="indexController">
-        <h3>Список продуктов</h3>
+        <h3>Список пользователей</h3>
         <table class="table table-hover" cellpadding="0" cellspacing="@">
         <tr>
         <td>id</td>
-        <td>Название продукта</td>
-        <td>Цена</td>
+        <td>Имя пользователя</td>
+        <td>Роли</td>
         </tr>
             <tbody>
-            <tr ng-repeat="p in getSlicedProductList(start, end)"/>
-                <td>{{p.id}}</td>
-                <td>{{p.title}}</td>
-                <td>{{p.cost}}</td>
+            <tr ng-repeat="u in getSlicedUserList(start, end)"/>
+                <td>{{u.id}}</td>
+                <td>{{u.username}}</td>
+                <td ng-repeat="r in u.roles">{{r.name}}
+                </td>
 
             </tr>
             <tr>
