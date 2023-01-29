@@ -25,10 +25,10 @@ public class UserDataGenerator {
         roleRepository.save(new Role("ROLE_MANAGER"));
         roleRepository.save(new Role("ROLE_ADMIN"));
         roleRepository.save(new Role("ROLE_SADMIN"));
-        userRepository.save(new User("user", "$2y$10$FzJtdaHdqr/VcNBAig1zV.e06vxcnz9DUSLFQxqg1JLDq1t9Guk5G"));
-        userRepository.save(new User("manager", "$2y$10$FzJtdaHdqr/VcNBAig1zV.e06vxcnz9DUSLFQxqg1JLDq1t9Guk5G"));
-        userRepository.save(new User("admin", "$2y$10$FzJtdaHdqr/VcNBAig1zV.e06vxcnz9DUSLFQxqg1JLDq1t9Guk5G"));
-        userRepository.save(new User("sadmin", "$2y$10$FzJtdaHdqr/VcNBAig1zV.e06vxcnz9DUSLFQxqg1JLDq1t9Guk5G"));
+        userRepository.save(new User("user", "100"));
+        userRepository.save(new User("manager", "100"));
+        userRepository.save(new User("admin", "100"));
+        userRepository.save(new User("sadmin", "100"));
         userRolesRepository.save(new UserRoles(1L,1L));
         userRolesRepository.save(new UserRoles(2L,1L));
         userRolesRepository.save(new UserRoles(2L,2L));
